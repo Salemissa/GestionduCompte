@@ -17,7 +17,8 @@ import javax.persistence.OneToMany;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_CPTE",
 discriminatorType=DiscriminatorType.STRING,length=4)
-public class Compte implements Serializable {
+
+public abstract class Compte implements Serializable {
 	@Id
    private String codeCompte;
    private Date dateCreation;
