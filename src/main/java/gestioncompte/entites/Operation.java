@@ -13,9 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+
 public class Operation implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
   private Long numeroOperation;
   private Date dateOperation;
   private double montant;

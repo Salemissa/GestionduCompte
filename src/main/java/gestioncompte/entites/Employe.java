@@ -17,7 +17,7 @@ public class Employe implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long codeEmploye;
   private String nomEmploye;
-  private String username;
+  private String login;
   private String password;
  
 @ManyToOne
@@ -57,10 +57,10 @@ public Employe(String nomEmploye) {
 	this.nomEmploye = nomEmploye;
 }
 
-public Employe(String nomEmploye, String username, String password, Employe employeSup) {
+public Employe(String nomEmploye, String login, String password, Employe employeSup) {
 	super();
 	this.nomEmploye = nomEmploye;
-	this.username = username;
+	this.login = login;
 	this.password = password;
 	this.employeSup = employeSup;
 }
@@ -69,10 +69,10 @@ public Employe() {
 	// TODO Auto-generated constructor stub
 }
 public String getUsername() {
-	return username;
+	return login;
 }
 public void setUsername(String username) {
-	this.username = username;
+	this.login = username;
 }
 public String getPassword() {
 	return password;
