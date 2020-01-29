@@ -11,6 +11,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 
@@ -45,6 +47,8 @@ public double getMontant() {
 public void setMontant(double montant) {
 	this.montant = montant;
 }
+
+@JsonIgnore
 public Compte getCompte() {
 	return compte;
 }

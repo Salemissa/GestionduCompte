@@ -1,6 +1,7 @@
 package gestioncompte.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import gestioncompte.services.EmployeService;
 import gestioncompte.services.OperationService;
+import gestioncompte.services.PageOperation;
 
 @RestController
 public class OperationRestController {
@@ -36,5 +38,16 @@ public class OperationRestController {
 			@RequestParam double montant) {
 		return operationService.virement(codeCpte1, codeCpte2, montant);
 	}
+	
+	@GetMapping(path="/Operations")
+	public PageOperation getOperations(
+			@RequestParam String code, 
+			@RequestParam int page, 
+			@RequestParam int size) {
+		return operationService.getOperations(code, page, size);
+	}
+	
+	
+	
 
 }

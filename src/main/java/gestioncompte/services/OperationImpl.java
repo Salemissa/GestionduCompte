@@ -57,7 +57,7 @@ public class OperationImpl implements  OperationService{
 			v.setDateOperation(new Date());
 			v.setMontant(montant);
 			v.setCompte(compte);
-			if(compte.getSolde() <montant) throw new RuntimeException("Compte introuvable");
+			if(compte.getSolde() <montant) throw new RuntimeException("montant insufisant");
 			compte.setSolde(compte.getSolde() - montant);
 			operationRepository.save(v);
 			
@@ -83,8 +83,8 @@ public class OperationImpl implements  OperationService{
 		
 	}
 	@Override
-	public PageOperation getOperations(String codeCpte, int page, int size) {
-		/*Page<Operation> ops=  operationRepository.getOperations(codeCpte, PageRequest.of(page, size));
+	public PageOperation getOperations(String code, int page, int size) {
+		Page<Operation> ops=  operationRepository.getOperations(code, PageRequest.of(page, size));
 	
 		
 		PageOperation pageOperation=new PageOperation();
@@ -92,9 +92,10 @@ public class OperationImpl implements  OperationService{
 		pageOperation.setNombreOperations(ops.getNumberOfElements());
 		pageOperation.setOperation(ops.getContent());
 		pageOperation.setPage(page);
-		pageOperation.setTotaleOperations(ops.getTotalPages());*/
+		pageOperation.setTotaleOperations((int)ops.getTotalElements());
+		pageOperation.setTotalepage(ops.getTotalPages());
 		
-		return null;
+		return pageOperation;
 	}
 	
 	
