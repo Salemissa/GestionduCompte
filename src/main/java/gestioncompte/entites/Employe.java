@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 @Entity
 public class Employe implements Serializable {
 	@Id
@@ -28,6 +31,20 @@ public class Employe implements Serializable {
   @JoinColumn(name="CODE_EMP"),
   inverseJoinColumns=@JoinColumn(name="CODE_GR"))
   private Collection<Groupe> groupes;
+  
+  
+  public Employe(String nomEmploye, String login, String password, Employe employeSup) {
+		super();
+		this.nomEmploye = nomEmploye;
+		this.login = login;
+		this.password = password;
+		this.employeSup = employeSup;
+	}
+	public Employe() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+  
 public Long getCodeEmploye() {
 	return codeEmploye;
 }
@@ -40,12 +57,17 @@ public String getNomEmploye() {
 public void setNomEmploye(String nomEmploye) {
 	this.nomEmploye = nomEmploye;
 }
+@JsonIgnore
 public Employe getEmployeSup() {
 	return employeSup;
 }
+
+@JsonSetter
 public void setEmployeSup(Employe employeSup) {
 	this.employeSup = employeSup;
 }
+
+@JsonIgnore
 public Collection<Groupe> getGroupes() {
 	return groupes;
 }
@@ -57,21 +79,11 @@ public Employe(String nomEmploye) {
 	this.nomEmploye = nomEmploye;
 }
 
-public Employe(String nomEmploye, String login, String password, Employe employeSup) {
-	super();
-	this.nomEmploye = nomEmploye;
-	this.login = login;
-	this.password = password;
-	this.employeSup = employeSup;
-}
-public Employe() {
-	super();
-	// TODO Auto-generated constructor stub
-}
-public String getUsername() {
+
+public String getlogin() {
 	return login;
 }
-public void setUsername(String username) {
+public void setlogin(String username) {
 	this.login = username;
 }
 public String getPassword() {

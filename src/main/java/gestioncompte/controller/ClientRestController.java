@@ -25,7 +25,7 @@ public class ClientRestController {
 	}
 	
     
-    @GetMapping(path = "/listesClient")
+    @GetMapping(path = "/listesClients")
     public List<Client> listAllClient(){
     	    return clientService.listAllClient();
     }

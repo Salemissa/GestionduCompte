@@ -47,7 +47,7 @@ public void setAdresseClient(String adresseClient) {
 	this.adresseClient = adresseClient;
 }
 
-@JsonIgnore //
+@JsonIgnore //supprimer le boucles  infinies reliee a 
 public Collection<Compte> getComptes() {
 	return comptes;
 }

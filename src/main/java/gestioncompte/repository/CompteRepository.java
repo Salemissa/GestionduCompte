@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import gestioncompte.entites.Compte;
 
-public interface CompteRepository extends JpaRepository<Compte, Long> {
+public interface CompteRepository extends JpaRepository<Compte, String> {
+
+	
 
 }
